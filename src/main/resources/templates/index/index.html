@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+  </head>
+
+  <body>
+    <a th:href="@{/products}">Products</a>
+    <a th:if="${is_admin == true}" th:href="@{/auth/register}">Register a new user</a>
+
+    <form th:action="@{/logout}" th:method="POST">
+      <input type="submit" th:value="Logout">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Products</title>
+	</head>
+
+	<body>
+		<div>
+			<div th:each="product : ${products}">
+				<p><a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.title}"></a></p>
+
+				<p th:each="link : ${product.linkDTOS}" th:text="${link.url} + ': ' + ${link.pricesDTO.lowestPrice} + 'р., ' + ${link.pricesDTO.medianPrice} + 'р., ' + ${link.pricesDTO.averagePrice} + 'р., ' + ${link.pricesDTO.highestPrice} + 'р.'"></p>
+			</div>
+		</div>
+
+		<form th:action="@{/logout}" th:method="POST">
+			<input type="submit" value="Logout">
+		</form>
+	</body>
+</html>

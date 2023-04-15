@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register a user</title>
+    </head>
+
+    <body>
+        <form th:action="@{/auth/register}" th:method="POST" th:object="${user}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}">
+            <span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username errors</span>
+
+            <label for="email">E-Mail:</label>
+            <input type="text" id="email" th:field="*{email}">
+            <span style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">E-Mail errors</span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}">
+            <span style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password errors</span>
+
+            <label for="password2">Confirm password:</label>
+            <input type="password" id="password2" th:field="*{password2}">
+            <span style="color: red" th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}">Password2 errors</span>
+
+            <label for="role">Role:</label>
+            <select name="role" id="role" th:field="*{role}">
+                <option th:value="ROLE_USER" th:text="User">User</option>
+                <option th:value="ROLE_ADMIN" th:text="Admin">Admin</option>
+            </select>
+            <span style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Role errors</span>
+
+            <input type="submit" value="Register this user">
+
+            <div th:if="${success == true}" style="color: green">
+                <p>You have successfully created a new user.</p>
+            </div>
+        </form>
+    </body>
+</html>

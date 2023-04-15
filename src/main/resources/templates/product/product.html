@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title th:text="${product.title}">Product</title>
+  </head>
+
+  <body>
+    <p th:text="${product.title}"></p>
+
+    <p>Links:</p>
+    <ul th:each="link : ${product.linkDTOS}">
+      <li><a th:href="${link.url}" th:text="${link.url}"></a></li>
+    </ul>
+  </body>
+</html>
